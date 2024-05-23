@@ -1,8 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-//    id ("kotlin-kapt")
-//    id("com.google.dagger.hilt.android")
+    id ("kotlin-kapt")
 }
 
 android {
@@ -68,6 +67,16 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
-    implementation("com.google.dagger:hilt-android:2.51.1")
-//    kapt("com.google.dagger:hilt-android-compiler:2.44")
+    implementation ("com.google.dagger:dagger:2.51.1")
+    kapt ("com.google.dagger:dagger-compiler:2.51.1")
+    implementation("com.github.terrakok:cicerone:7.1")
+
+    implementation(project(":main"))
+    api(project(":core"))
+    api(project(":currency_converter"))
+    api(project(":network"))
+}
+
+kapt {
+    correctErrorTypes = true
 }

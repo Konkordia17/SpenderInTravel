@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SpenderInTravel</string>
+    <string name="cost_accounting">Учет расходов</string>
+    <string name="history">История</string>
+    <string name="statistic">Статистика</string>
+    <string name="currency_converter">Конвертер валют</string>
+</resources>
