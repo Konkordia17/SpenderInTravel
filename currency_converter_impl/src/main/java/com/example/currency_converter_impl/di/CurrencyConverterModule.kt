@@ -19,8 +19,4 @@ interface CurrencyConverterModule {
   fun provideCurrencyConverterRepository(
       currencyConverterRepository: CurrencyConverterRepositoryImpl
   ): CurrencyConverterRepository
-
-//    @Binds
-//    @IntoMap
-//    abstract fun bindCurrencyConverterViewModel(viewModel: CurrencyConverterViewModel): ViewModel
 }

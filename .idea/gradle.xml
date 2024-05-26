@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="#GRADLE_LOCAL_JAVA_HOME" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/core_api" />
+            <option value="$PROJECT_DIR$/core_impl" />
+            <option value="$PROJECT_DIR$/currency_converter" />
+            <option value="$PROJECT_DIR$/currency_converter_api" />
+            <option value="$PROJECT_DIR$/currency_converter_impl" />
+            <option value="$PROJECT_DIR$/main" />
+            <option value="$PROJECT_DIR$/main_api" />
+            <option value="$PROJECT_DIR$/network" />
+            <option value="$PROJECT_DIR$/network_api" />
+            <option value="$PROJECT_DIR$/network_impl" />
+          </set>
+        </option>
+        <option name="resolveExternalAnnotations" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
