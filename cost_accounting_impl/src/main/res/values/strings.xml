@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="save">Сохранить</string>
+    <string name="choose_currency_error">*Необходимо выбрать валюту</string>
+    <string name="choose_date">Выберите дату</string>
+    <string name="cancel">Отмена</string>
+    <string name="ok">Ок</string>
+    <string name="mentioned_sum">Укажите сумму</string>
+    <string name="complete_field">*Это поле обязательно для заполноения</string>
+    <string name="sum_placeholder">сумма...</string>
+    <string name="add_description_placeholder">Добавьте описание...</string>
+    <string name="notes_are_saved">Заметки успешно сохранены</string>
+</resources>

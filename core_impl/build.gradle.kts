@@ -29,16 +29,24 @@ android {
 }
 
 dependencies {
-  implementation("androidx.core:core-ktx:1.13.1")
-  implementation("androidx.appcompat:appcompat:1.6.1")
-  implementation("com.google.android.material:material:1.12.0")
-  testImplementation("junit:junit:4.13.2")
-  androidTestImplementation("androidx.test.ext:junit:1.1.5")
-  androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-  implementation("com.google.dagger:dagger:2.51.1")
-  kapt("com.google.dagger:dagger-compiler:2.51.1")
-  implementation("com.github.terrakok:cicerone:7.1")
+  implementation(Libs.Dagger.dagger)
+  kapt(Libs.Dagger.dagger_kapt)
+  implementation(Libs.Navigation.cicerone)
+  implementation(platform(Libs.OkHttp.bom))
+  implementation(Libs.OkHttp.okhttp)
+  implementation(Libs.OkHttp.interceptor)
+  implementation(Libs.Retrofit.retrofit)
+  implementation(Libs.Retrofit.converter_gson)
+  implementation(Libs.Room.room_runtime)
+  annotationProcessor(Libs.Room.compiler)
+  kapt(Libs.Room.compiler)
+  implementation(Libs.Room.room_ktx)
+  implementation(Libs.Android.core)
+  implementation(Libs.Android.appcompat)
+  implementation(Libs.Android.material)
+  testImplementation(Libs.Tests.junit)
+  androidTestImplementation(Libs.Tests.ext_junit)
+  androidTestImplementation(Libs.Tests.espresso)
 
   api(project(":core_api"))
-
 }

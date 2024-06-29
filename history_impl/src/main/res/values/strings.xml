@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="no_expense_records">Нет записей о расходах</string>
+    <string name="currency">Валюта</string>
+    <string name="sum">Сумма</string>
+    <string name="repeat">Повторить</string>
+    <string name="costs_per_day">Расходы за день</string>
+    <string name="history">История</string>
+    <string name="no_comments">Комментарии отсутствуют</string>
+    <string name="error">Не удалось получить данные о курсе валют</string>
+    <string name="choose_another_currency">Выбрать другую валюту</string>
+    <string name="convert_by_date">Конвертировать в другую валюту по курсу на %s</string>
+</resources>

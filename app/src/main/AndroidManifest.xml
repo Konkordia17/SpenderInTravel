@@ -17,10 +17,11 @@
         android:theme="@style/Theme.SpenderInTravel"
         tools:targetApi="31">
         <activity
-            android:name="com.example.main.presentation.MainActivity"
+            android:windowSoftInputMode="adjustResize"
+            android:name="com.example.activity.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.SpenderInTravel">
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

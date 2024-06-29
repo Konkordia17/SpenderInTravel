@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_message">Не удалось получить данные для конвертации</string>
+    <string name="repeat">Повторить</string>
+    <string name="choose_currency">Выберите валюту</string>
+    <string name="currency_converter">Конвертер валют</string>
+</resources>

@@ -1,8 +1,8 @@
 package com.example.currency_converter_impl.domain
 
-import com.example.network_api.models.CurrencyResponse
+import com.example.core_api.api_models.CurrenciesDataModel
 
 interface CurrencyConverterRepository {
 
-    suspend fun getCurrencies(): CurrencyResponse
+  suspend fun getCurrencies(): CurrenciesDataModel
 }

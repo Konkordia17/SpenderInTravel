@@ -1,18 +1,26 @@
 package com.example.currency_converter_impl.di
 
-import com.example.currency_converter_api.CurrencyConverterProvider
-import com.example.currency_converter_impl.presentation.CurrencyConverterViewModel
-import com.example.network.NetworkComponentProvider
+import com.example.core_api.mediator.ProvidersFacade
+import com.example.currency_converter_impl.presentation.CurrencyConverterFragment
+import com.example.currency_converter_impl.presentation.CurrencyConverterViewModelFactory
 import dagger.Component
 
 @Component(
-    modules = [CurrencyConverterModule::class], dependencies = [NetworkComponentProvider::class])
-interface CurrencyConverterComponent : CurrencyConverterProvider {
+    dependencies = [ProvidersFacade::class],
+    modules =
+        [CurrencyConverterModule::class, CurrencyConverterBindsModule::class])
+interface CurrencyConverterComponent {
 
-    fun injectViewModel(): CurrencyConverterViewModel
+  fun inject(fragment: CurrencyConverterFragment)
 
-  @Component.Factory
-  interface Factory {
-    fun create(networkComponentProvider: NetworkComponentProvider): CurrencyConverterComponent
+  fun getViewModelFactory(): CurrencyConverterViewModelFactory
+
+  companion object {
+
+    fun create(
+        providersFacade: ProvidersFacade,
+    ): CurrencyConverterComponent {
+      return DaggerCurrencyConverterComponent.builder().providersFacade(providersFacade).build()
+    }
   }
 }

@@ -1,22 +1,13 @@
 package com.example.currency_converter_impl.di
 
-import com.example.currency_converter_api.CurrencyConverterApi
-import com.example.currency_converter_impl.data.CurrencyConverterRepositoryImpl
-import com.example.currency_converter_impl.domain.CurrencyConverterRepository
-import com.example.currency_converter_impl.navigation.CurrencyConverterImpl
-import dagger.Binds
+import com.example.currency_converter_impl.data.CurrencyApi
 import dagger.Module
+import dagger.Provides
+import retrofit2.Retrofit
 
 @Module
-interface CurrencyConverterModule {
+object CurrencyConverterModule {
 
-  @Binds
-  fun provideCurrencyConverterApi(
-      currencyConverterImpl: CurrencyConverterImpl
-  ): CurrencyConverterApi
-
-  @Binds
-  fun provideCurrencyConverterRepository(
-      currencyConverterRepository: CurrencyConverterRepositoryImpl
-  ): CurrencyConverterRepository
+  @Provides
+  fun provideApiService(retrofit: Retrofit): CurrencyApi = retrofit.create(CurrencyApi::class.java)
 }

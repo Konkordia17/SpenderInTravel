@@ -1,3 +1,0 @@
-package com.example.core_api
-
-interface CoreFacadeComponentProviders : CoreComponentProvider
