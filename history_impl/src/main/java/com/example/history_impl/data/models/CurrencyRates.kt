@@ -37,20 +37,3 @@ data class CurrencyRates (
     @SerializedName("USD") val USD: Double,
     @SerializedName("ZAR") val ZAR: Double,
 )
-
-//AUD("Australian Dollar — Австралийский доллар (Австралия)"),
-
-//MXN("Mexican Peso — Мексиканское песо (Мексика)"),
-//MYR("Malaysian Ringgit — Малайзийский ринггит (Малайзия)"),
-//NOK("Norwegian Krone — Норвежская крона (Норвегия)"),
-//NZD("New Zealand Dollar — Новозеландский доллар (Новая Зеландия)"),
-//PHP("Philippine Peso — Филиппинское песо (Филиппины)"),
-//PLN("Polish Zloty — Польский злотый (Польша)"),
-//RON("Romanian Leu — Румынский лей (Румыния)"),
-//RUB("Russian Ruble — Российский рубль (Россия)"),
-//SEK("Swedish Krona — Шведская крона (Швеция)"),
-//SGD("Singapore Dollar — Сингапурский доллар (Сингапур)"),
-//THB("Thai Baht — Тайский бат (Таиланд)"),
-//TRY("Turkish Lira — Турецкая лира (Турция)"),
-//USD("United States Dollar — Доллар США (Соединенные Штаты Америки)"),
-//ZAR("South African Rand — Южноафриканский ранд (Южная Африка")

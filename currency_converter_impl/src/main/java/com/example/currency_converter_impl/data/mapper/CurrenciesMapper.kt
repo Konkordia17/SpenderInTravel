@@ -1,4 +1,4 @@
-package com.example.network_impl.data.mapper
+package com.example.currency_converter_impl.data.mapper
 
 import com.example.core_api.api_models.Currencies
 import com.example.core_api.api_models.CurrenciesDataModel

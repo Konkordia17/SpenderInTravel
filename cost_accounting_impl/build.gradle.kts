@@ -3,6 +3,7 @@ plugins {
   id("org.jetbrains.kotlin.android")
   id("kotlin-kapt")
   id("kotlin-parcelize")
+  id("org.jetbrains.kotlinx.kover")
 }
 
 android {
@@ -15,11 +16,16 @@ android {
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     consumerProguardFiles("consumer-rules.pro")
   }
+  testOptions { unitTests.isIncludeAndroidResources = true }
 
   buildTypes {
+      debug {
+         enableUnitTestCoverage = true
+      }
     release {
       isMinifyEnabled = false
       proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+      enableUnitTestCoverage = false
     }
   }
   compileOptions {
@@ -31,6 +37,19 @@ android {
   composeOptions { kotlinCompilerExtensionVersion = "1.5.1" }
 
   buildFeatures { compose = true }
+}
+kover {
+  filters {
+    classes {
+      excludes += listOf(
+        "**/R.class",
+        "**/R$*.class",
+        "**/BuildConfig.*",
+        "**/Manifest*.*",
+        "**/*Test*.*"
+      )
+    }
+  }
 }
 
 dependencies {
@@ -71,6 +90,14 @@ dependencies {
   debugImplementation(Libs.Compose.test)
   implementation(platform(Libs.Compose.bom))
   implementation(Libs.Kotlin.immutable)
+
+  testImplementation(Libs.Tests.jupiter_api)
+  testRuntimeOnly(Libs.Tests.jupiter_engine)
+  testImplementation(Libs.Tests.jupiter_params)
+
+  testImplementation(Libs.Tests.mockk)
+  androidTestImplementation(Libs.Tests.mockk_android)
+  testImplementation(Libs.Tests.coroutines)
 
   implementation(project(":core"))
   implementation(project(":cost_accounting_api"))

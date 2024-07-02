@@ -26,9 +26,18 @@ object Libs {
   }
 
   object Tests {
+    private const val jupiter_version = "5.8.2"
+
     const val junit = "junit:junit:4.13.2"
     const val ext_junit = "androidx.test.ext:junit:1.1.5"
     const val espresso = "androidx.test.espresso:espresso-core:3.5.1"
+    const val jupiter_api = "org.junit.jupiter:junit-jupiter-api:$jupiter_version"
+    const val jupiter_engine = "org.junit.jupiter:junit-jupiter-engine:$jupiter_version"
+    const val jupiter_params = "org.junit.jupiter:junit-jupiter-params:$jupiter_version"
+    const val jupiter_vintage_engine = "org.junit.jupiter:junit-vintage-engine:$jupiter_version"
+    const val mockk = "io.mockk:mockk:1.12.0"
+    const val mockk_android = "io.mockk:mockk-android:1.12.0"
+    const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.1"
   }
 
   object Lottie {

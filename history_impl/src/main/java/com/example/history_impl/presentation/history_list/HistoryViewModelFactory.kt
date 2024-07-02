@@ -13,14 +13,13 @@ class HistoryViewModelFactory
 @Inject
 constructor(
     private val historyInteractor: HistoryInteractor,
-    private val costItemMapper: CostItemMapper,
     private val router: Router
 ) : ViewModelProvider.Factory {
 
   @RequiresApi(Build.VERSION_CODES.O)
   override fun <T : ViewModel> create(modelClass: Class<T>): T {
     return when (modelClass) {
-      HistoryViewModel::class.java -> HistoryViewModel(historyInteractor, costItemMapper, router)
+      HistoryViewModel::class.java -> HistoryViewModel(historyInteractor, router)
       else -> throw IllegalArgumentException("Unknown ViewModel class")
     }
         as T

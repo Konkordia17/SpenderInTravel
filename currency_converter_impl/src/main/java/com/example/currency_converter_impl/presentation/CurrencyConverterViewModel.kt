@@ -94,8 +94,6 @@ constructor(
                         currencyToResult =
                             result.currencies.find { it.currency == Currencies.USD }?.value ?: 0.0,
                     )))
-
-        println(result)
       } catch (e: Exception) {
         _currencyScreenState.value = CurrencyScreenState.Error(::getCurrencies)
       }

@@ -2,7 +2,7 @@ package com.example.currency_converter_impl.data
 
 import com.example.core_api.api_models.CurrenciesDataModel
 import com.example.currency_converter_impl.domain.CurrencyConverterRepository
-import com.example.network_impl.data.mapper.CurrenciesMapper
+import com.example.currency_converter_impl.data.mapper.CurrenciesMapper
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

@@ -29,7 +29,6 @@ class HistoryViewModel
 @Inject
 constructor(
     private val historyInteractor: HistoryInteractor,
-    private val costItemMapper: CostItemMapper,
     private val router: Router
 ) : ViewModel() {
 
