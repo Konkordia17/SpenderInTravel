@@ -31,9 +31,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -59,7 +62,7 @@ fun CostAccountingScreen(viewModel: CostAccountingViewModel, optionText: String)
   val isCostsSaved by viewModel.isAlertShown.collectAsState()
   Column(
       modifier =
-          Modifier.fillMaxSize()
+          Modifier.fillMaxSize().testTag("CostAccountingScreen")
               .background(color = colorResource(id = com.example.core.R.color.brand_color))
               .padding(16.dp),
       horizontalAlignment = Alignment.CenterHorizontally) {
@@ -69,7 +72,7 @@ fun CostAccountingScreen(viewModel: CostAccountingViewModel, optionText: String)
         DatePicker(viewModel)
 
         Row(
-            Modifier.padding(top = 30.dp).fillMaxWidth().clickable { expanded = true },
+            Modifier.padding(top = 30.dp).fillMaxWidth().clickable { expanded = true }.semantics { contentDescription = "choose_currency" },
             verticalAlignment = Alignment.CenterVertically) {
               Text(
                   textAlign = TextAlign.Center,
@@ -84,12 +87,14 @@ fun CostAccountingScreen(viewModel: CostAccountingViewModel, optionText: String)
               if (isCurrencyError) {
                 Text(
                     text = stringResource(id = R.string.choose_currency_error),
-                    color = colorResource(id = com.example.core.R.color.red_600))
+                    color = colorResource(id = com.example.core.R.color.red_600),
+                modifier = Modifier.testTag("currency_error"))
               }
 
               DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
                 options.forEach { option ->
                   DropdownMenuItem(
+                      modifier = Modifier.testTag(option.description),
                       onClick = {
                         selectedOptionText = option.description
                         selectedCurrency = option
@@ -163,7 +168,7 @@ fun CostAccountingButton(isEnabled: Boolean, onClick: () -> Unit) {
   OutlinedButton(
       onClick = onClick,
       enabled = isEnabled,
-      modifier = Modifier.padding(top = 16.dp).fillMaxWidth().height(56.dp),
+      modifier = Modifier.padding(top = 16.dp).fillMaxWidth().height(56.dp).testTag("CostAccountingButton"),
       shape = RoundedCornerShape(10.dp),
       border =
           BorderStroke(

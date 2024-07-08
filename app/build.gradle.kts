@@ -34,6 +34,8 @@ android {
 }
 
 dependencies {
+  implementation(Libs.Compose.junit4_android)
+  implementation(Libs.Android.appcompat)
   kapt(Libs.Dagger.dagger_kapt)
   implementation(Libs.Dagger.dagger)
   implementation(Libs.Navigation.cicerone)
@@ -42,6 +44,18 @@ dependencies {
   implementation(Libs.OkHttp.interceptor)
   implementation(Libs.Retrofit.retrofit)
   implementation(Libs.Retrofit.converter_gson)
+  testImplementation(Libs.Tests.jupiter_api)
+  testRuntimeOnly(Libs.Tests.jupiter_engine)
+  testImplementation(Libs.Tests.jupiter_params)
+
+  testImplementation(Libs.Tests.mockk)
+  androidTestImplementation(Libs.Tests.mockk_android)
+  testImplementation(Libs.Tests.junit)
+  androidTestImplementation(Libs.Tests.ext_junit)
+  androidTestImplementation(Libs.Tests.espresso)
+  androidTestImplementation(Libs.Compose.junit4)
+
+  debugImplementation(Libs.Compose.test)
 
   api(project(":core"))
 

@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -28,6 +29,7 @@ fun MenuScreen(onMenuClick: (MenuScreens) -> Unit) {
       modifier =
           Modifier.fillMaxSize()
               .background(color = colorResource(id = R.color.brand_color))
+              .testTag("MenuScreen")
               .paint(
                   painter = painterResource(id = R.drawable.ic_finance),
                   contentScale = ContentScale.Crop),
@@ -49,7 +51,7 @@ fun MenuButton(title: Int, doOnClick: () -> Unit) {
       onClick = doOnClick,
       shape = RoundedCornerShape(20.dp),
       border = BorderStroke(width = 2.dp, color = colorResource(id = R.color.teal_700)),
-      modifier = Modifier.padding(20.dp),
+      modifier = Modifier.testTag(stringResource(id = title)).padding(20.dp),
       colors = ButtonDefaults.outlinedButtonColors(containerColor = Color.White)) {
         Text(
             text = stringResource(id = title),

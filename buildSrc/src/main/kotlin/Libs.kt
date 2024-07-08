@@ -9,8 +9,9 @@ object Libs {
   object Compose {
     const val bom = "androidx.compose:compose-bom:2023.08.00"
     const val ui_tooling = "androidx.compose.ui:ui-tooling"
-    const val junit4 = "androidx.compose.ui:ui-test-junit4"
+    const val junit4 = "androidx.compose.ui:ui-test-junit4:1.6.0"
     const val test = "androidx.compose.ui:ui-test-manifest"
+    const val junit4_android = "androidx.compose.ui:ui-test-junit4-android:1.6.0"
     const val ui = "androidx.compose.ui:ui"
     const val graphics = "androidx.compose.ui:ui-graphics"
     const val preview = "androidx.compose.ui:ui-tooling-preview"
@@ -30,7 +31,7 @@ object Libs {
 
     const val junit = "junit:junit:4.13.2"
     const val ext_junit = "androidx.test.ext:junit:1.1.5"
-    const val espresso = "androidx.test.espresso:espresso-core:3.5.1"
+    const val espresso = "androidx.test.espresso:espresso-core:3.5.0"
     const val jupiter_api = "org.junit.jupiter:junit-jupiter-api:$jupiter_version"
     const val jupiter_engine = "org.junit.jupiter:junit-jupiter-engine:$jupiter_version"
     const val jupiter_params = "org.junit.jupiter:junit-jupiter-params:$jupiter_version"

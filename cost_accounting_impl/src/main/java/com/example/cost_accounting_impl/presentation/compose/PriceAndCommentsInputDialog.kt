@@ -21,6 +21,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
@@ -41,7 +42,7 @@ fun InputDialog(onDismiss: () -> Unit, onAccept: (sum: Double?, comments: String
       properties = DialogProperties(dismissOnBackPress = true, dismissOnClickOutside = true)) {
         Surface(
             shape = MaterialTheme.shapes.medium,
-            modifier = Modifier.fillMaxWidth().padding(16.dp)) {
+            modifier = Modifier.fillMaxWidth().padding(16.dp).testTag("InputDialog")) {
               Column(
                   modifier = Modifier.padding(16.dp),
                   verticalArrangement = Arrangement.Center,
@@ -52,6 +53,7 @@ fun InputDialog(onDismiss: () -> Unit, onAccept: (sum: Double?, comments: String
                     Spacer(modifier = Modifier.height(8.dp))
                     if (isErrorShown) {
                       Text(
+                          modifier = Modifier.testTag("input_error"),
                           text =
                               stringResource(
                                   id = com.example.cost_accounting.R.string.complete_field),
@@ -64,7 +66,7 @@ fun InputDialog(onDismiss: () -> Unit, onAccept: (sum: Double?, comments: String
                             sum = it
                           }
                         },
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier.fillMaxWidth().testTag("costs"),
                         placeholder = {
                           Text(
                               stringResource(
@@ -79,7 +81,7 @@ fun InputDialog(onDismiss: () -> Unit, onAccept: (sum: Double?, comments: String
                     TextField(
                         value = comments,
                         onValueChange = { comments = it },
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier.fillMaxWidth().testTag("comments"),
                         placeholder = {
                           Text(
                               stringResource(
@@ -107,7 +109,7 @@ fun InputDialog(onDismiss: () -> Unit, onAccept: (sum: Double?, comments: String
                                   onDismiss()
                                 }
                               }) {
-                                Text(stringResource(id = com.example.cost_accounting.R.string.ok))
+                                Text(text = stringResource(id = com.example.cost_accounting.R.string.ok), modifier = Modifier.testTag("alert_confirm_button"))
                               }
                         }
                   }

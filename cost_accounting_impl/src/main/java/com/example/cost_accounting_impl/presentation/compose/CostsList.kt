@@ -13,6 +13,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -37,7 +38,7 @@ fun CostsList(
 @Composable
 fun CostItem(id: Int, item: CostItemUiModel, doOnDelete: () -> Unit) {
     Row(
-        modifier = Modifier.fillMaxWidth().padding(8.dp),
+        modifier = Modifier.fillMaxWidth().padding(8.dp).testTag("$id. ${item.category} ${item.sum} ${item.currency}"),
         verticalAlignment = Alignment.CenterVertically) {
         Text(text = "$id.", fontWeight = FontWeight.Bold, fontSize = 20.sp)
         Text(modifier = Modifier.padding(start = 8.dp), text = item.category, fontSize = 20.sp)
