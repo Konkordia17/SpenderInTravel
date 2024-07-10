@@ -74,4 +74,10 @@ object Libs {
     const val compiler = "androidx.room:room-compiler:$version"
     const val room_ktx = "androidx.room:room-ktx:$version"
   }
+
+  object  Google {
+    const val api_client = "com.google.api-client:google-api-client:2.6.0"
+    const val oauth_client = "com.google.oauth-client:google-oauth-client:1.36.0"
+    const val androidpublisher = "com.google.apis:google-api-services-androidpublisher:v3-rev20240624-2.0.0"
+  }
 }
