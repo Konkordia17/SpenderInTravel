@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ButtonDefaults
@@ -62,7 +63,8 @@ fun CostAccountingScreen(viewModel: CostAccountingViewModel, optionText: String)
   val isCostsSaved by viewModel.isAlertShown.collectAsState()
   Column(
       modifier =
-          Modifier.fillMaxSize().testTag("CostAccountingScreen")
+          Modifier.fillMaxSize()
+              .testTag("CostAccountingScreen")
               .background(color = colorResource(id = com.example.core.R.color.brand_color))
               .padding(16.dp),
       horizontalAlignment = Alignment.CenterHorizontally) {
@@ -72,24 +74,24 @@ fun CostAccountingScreen(viewModel: CostAccountingViewModel, optionText: String)
         DatePicker(viewModel)
 
         Row(
-            Modifier.padding(top = 30.dp).fillMaxWidth().clickable { expanded = true }.semantics { contentDescription = "choose_currency" },
+            Modifier.padding(top = 30.dp).padding(horizontal = 4.dp)
+                .fillMaxWidth()
+                .clickable { expanded = true }
+                .semantics { contentDescription = "choose_currency" },
             verticalAlignment = Alignment.CenterVertically) {
               Text(
                   textAlign = TextAlign.Center,
                   text = selectedOptionText,
                   modifier =
-                      Modifier.border(
+                      Modifier.width(350.dp).border(
                               width = 1.dp,
                               color = colorResource(id = com.example.core.R.color.teal_200),
                               shape = RoundedCornerShape(10.dp))
                           .padding(5.dp))
-              Image(painterResource(id = R.drawable.ic_select), contentDescription = "")
-              if (isCurrencyError) {
-                Text(
-                    text = stringResource(id = R.string.choose_currency_error),
-                    color = colorResource(id = com.example.core.R.color.red_600),
-                modifier = Modifier.testTag("currency_error"))
-              }
+              Image(
+                  modifier = Modifier.size(20.dp),
+                  painter = painterResource(id = R.drawable.ic_select),
+                  contentDescription = "")
 
               DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
                 options.forEach { option ->
@@ -105,6 +107,12 @@ fun CostAccountingScreen(viewModel: CostAccountingViewModel, optionText: String)
                 }
               }
             }
+      if (isCurrencyError) {
+          Text(
+              text = stringResource(id = R.string.choose_currency_error),
+              color = colorResource(id = com.example.core.R.color.red_600),
+              modifier = Modifier.testTag("currency_error"))
+      }
         Categories(itemsList = viewModel.getCategories()) { categoryItem ->
           if (selectedCurrency != null) {
             chosenCategory = categoryItem
@@ -168,7 +176,11 @@ fun CostAccountingButton(isEnabled: Boolean, onClick: () -> Unit) {
   OutlinedButton(
       onClick = onClick,
       enabled = isEnabled,
-      modifier = Modifier.padding(top = 16.dp).fillMaxWidth().height(56.dp).testTag("CostAccountingButton"),
+      modifier =
+          Modifier.padding(top = 16.dp)
+              .fillMaxWidth()
+              .height(56.dp)
+              .testTag("CostAccountingButton"),
       shape = RoundedCornerShape(10.dp),
       border =
           BorderStroke(

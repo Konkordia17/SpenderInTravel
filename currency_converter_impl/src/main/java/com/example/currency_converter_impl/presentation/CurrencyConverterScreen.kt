@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.systemBarsPadding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -23,6 +24,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
@@ -40,6 +42,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -70,9 +73,10 @@ fun CurrencyConverterScreen(viewModel: CurrencyConverterViewModel) {
               .background(color = colorResource(id = com.example.core.R.color.brand_color))
               .padding(start = 20.dp, end = 20.dp, bottom = 20.dp),
       verticalArrangement = Arrangement.Top) {
-        Toolbar(title = stringResource(id = R.string.currency_converter), onBackClick = viewModel::back)
+        Toolbar(
+            title = stringResource(id = R.string.currency_converter), onBackClick = viewModel::back)
         Image(
-            modifier = Modifier.padding(top = 10.dp).size(250.dp),
+            modifier = Modifier.padding(top = 10.dp).weight(1f),
             painter = painterResource(id = com.example.core.R.drawable.ic_man_converts),
             contentDescription = "")
 
@@ -119,7 +123,7 @@ fun CurrenciesConverterBlock(
     data: CurrenciesConverterUiModel,
     doOnCurrentValueChange: (Boolean, String) -> Unit,
     onChangeCurrencies: () -> Unit,
-    onCurrencyClick: (Currencies, Boolean) -> Unit
+    onCurrencyClick: (Currencies, Boolean) -> Unit,
 ) {
   Row(
       modifier = Modifier.fillMaxWidth().padding(16.dp),
@@ -131,7 +135,8 @@ fun CurrenciesConverterBlock(
               currency = data.currencyFrom.name,
               amount = data.currencyFromResult.toString(),
               onValueChange = { doOnCurrentValueChange.invoke(true, it) },
-              onCurrencyClick = { onCurrencyClick.invoke(data.currencyFrom, true) })
+              onCurrencyClick = { onCurrencyClick.invoke(data.currencyFrom, true) },
+              isCurrentCurrency = true)
           CurrencyInputField(
               modifier = Modifier.padding(top = 10.dp),
               currency = data.currencyTo.name,
@@ -158,7 +163,8 @@ fun CurrencyInputField(
     amount: String,
     currency: String,
     onValueChange: (String) -> Unit,
-    onCurrencyClick: () -> Unit
+    onCurrencyClick: () -> Unit,
+    isCurrentCurrency: Boolean = false
 ) {
   var currentValue by remember { mutableStateOf(amount) }
   LaunchedEffect(amount) {
@@ -189,7 +195,12 @@ fun CurrencyInputField(
           }
         },
         keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
-        modifier = Modifier.weight(1f),
+        modifier = Modifier.width(240.dp)
+            .onFocusChanged { focusState ->
+            if (focusState.isFocused && currentValue == "0.0") {
+                currentValue = ""
+            }
+        },
         shape = RoundedCornerShape(10.dp),
         colors =
             TextFieldDefaults.colors(
@@ -199,6 +210,14 @@ fun CurrencyInputField(
                 focusedContainerColor = colorResource(id = com.example.core.R.color.brand_color),
                 unfocusedIndicatorColor = colorResource(id = com.example.core.R.color.blue),
                 focusedIndicatorColor = colorResource(id = com.example.core.R.color.purple_700)))
+    if (isCurrentCurrency) {
+      Icon(
+          modifier = Modifier.size(20.dp).clickable {
+              onValueChange.invoke("0")
+                                                    },
+          painter = painterResource(id = R.drawable.ic_close),
+          contentDescription = "")
+    }
   }
 }
 
